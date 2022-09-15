@@ -1,0 +1,8 @@
+#include <stdio.h>
+int main(){
+    int a;
+    char str[200];
+    scanf("%d %s",&a, str);
+    printf("Your number is %d\nYour string is %s",a,str);
+    return 0;
+}
