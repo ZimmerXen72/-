@@ -1,0 +1,19 @@
+#include <stdio.h>
+enum Auto{
+    Passenger, Sport, Truck, Bus
+};
+struct Square{
+    int b;
+    int perimeter;
+    int area;
+};
+int main(){
+    enum Auto a;
+    a=Truck;
+    printf("%d%c",a,' ');
+    struct Square s;
+    s.b=15;
+    s.area=4*s.b;
+    printf("%d%c",s.area,' ');
+    return 0;
+}
