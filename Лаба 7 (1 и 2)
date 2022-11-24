@@ -1,19 +1,41 @@
 #include <stdio.h>
+#include <math.h>
 enum Auto{
     Passenger, Sport, Truck, Bus
 };
-struct Square{
-    int b;
-    int perimeter;
-    int area;
-};
+typedef struct point{
+    int x;
+    int y;
+}point;
+typedef struct Square{
+    point A;
+    point B;
+    point C;
+    point D;
+}Square;
+int SquareArea(struct Square *s){
+    int ab=sqrt(pow((s->A.x-s->B.x),2)+pow((s->A.y-s->B.y),2));
+    int bc=sqrt(pow((s->B.x-s->C.x),2)+pow((s->B.y-s->C.y),2));
+    int ac=sqrt(pow((s->A.x-s->C.x),2)+pow((s->A.y-s->C.y),2));
+    int bd=sqrt(pow((s->B.x-s->D.x),2)+pow((s->B.y-s->D.y),2));
+    if (ac==bd && ab==bc){
+        int area=ab*bc;
+        return area;
+    }else{
+        return -1;
+    }
+
+}
 int main(){
     enum Auto a;
     a=Truck;
     printf("%d%c",a,' ');
-    struct Square s;
-    s.b=15;
-    s.area=4*s.b;
-    printf("%d%c",s.area,' ');
+    Square f;
+    f.A.x=0;f.A.y=0;
+    f.B.x=3;f.B.y=0;
+    f.C.x=3;f.C.y=3;
+    f.D.x=0;f.D.y=3;
+    int SSquare=SquareArea(&f);
+    printf("%d",SSquare);
     return 0;
 }
