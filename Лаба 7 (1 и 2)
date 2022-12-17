@@ -13,18 +13,22 @@ typedef struct Square{
     point C;
     point D;
 }Square;
-int SquareArea(struct Square *s){
-    int ab=sqrt(pow((s->A.x-s->B.x),2)+pow((s->A.y-s->B.y),2));
-    int bc=sqrt(pow((s->B.x-s->C.x),2)+pow((s->B.y-s->C.y),2));
-    int ac=sqrt(pow((s->A.x-s->C.x),2)+pow((s->A.y-s->C.y),2));
-    int bd=sqrt(pow((s->B.x-s->D.x),2)+pow((s->B.y-s->D.y),2));
-    if (ac==bd && ab==bc){
-        int area=ab*bc;
-        return area;
+int seg(int Ax, int Bx, int Ay, int By){
+    int seg=sqrt(pow((Ax-Bx),2)+pow((Ay-By),2));
+}
+int CheckSquareArea(int s1, int s2, int d1, int d2){
+    if (s1==s2 && d1==d2){
+        int area=s1*s2;
     }else{
-        return -1;
+        int area=-1;
     }
-
+}
+int SquareData(struct Square *s) {
+    int s1 = seg(s->A.x, s->B.x, s->A.y, s->B.y);
+    int s2 = seg(s->B.x, s->C.x, s->B.y, s->C.y);
+    int d1 = seg(s->A.x, s->C.x, s->A.y, s->C.y);
+    int d2 = seg(s->B.x, s->D.x, s->B.y, s->D.y);
+    int area = CheckSquareArea(s1, s2, d1, d2);
 }
 int main(){
     enum Auto a;
@@ -35,7 +39,7 @@ int main(){
     f.B.x=3;f.B.y=0;
     f.C.x=3;f.C.y=3;
     f.D.x=0;f.D.y=3;
-    int SSquare=SquareArea(&f);
+    int SSquare=SquareData(&f);
     printf("%d",SSquare);
     return 0;
 }
